@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.loginPageInput::placeholder{
+    color: rgb(102, 101, 101);
+}
+
+.loader {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+
+    .file-input {
+        display: none;
+      }
+  
+      .file-input-label {
+        text-align: center;
+        line-height: 70px;
+        cursor: pointer;
+        /* font-size: 24px;  */
+      }
+
+
+      .scroll-container {
+        width: 48%;
+        height: 100vh; /* Full viewport height */
+        overflow: hidden; /* Hide default scrollbars */
+        position: relative; /* Ensure the container is positioned for custom scrollbar styling */
+    }
+    
+    .scroll-content {
+        height: 100%; /* Full height to allow scrolling */
+        overflow: auto; /* Allow scrolling */
+        padding-right: 16px; /* Add padding to ensure content doesn't get hidden behind the scrollbar */
+    }
+    
+    /* Hide the scrollbar for Webkit browsers (Chrome, Safari) */
+    .scroll-content::-webkit-scrollbar {
+        width: 0; /* Hide scrollbar width */
+        height: 0; /* Hide scrollbar height */
+    }
+    
+    /* Hide the scrollbar for Firefox */
+    .scroll-content {
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+    }
+    
+
