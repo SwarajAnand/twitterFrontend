@@ -8,7 +8,7 @@ const Home = () => {
     <div className="flex">
       <LeftSection />
       <Outlet />
-      <RightSection />
+      {/* <RightSection /> */}
     </div>
   );
 };

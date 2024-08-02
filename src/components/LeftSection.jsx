@@ -30,11 +30,15 @@ const LeftSection = () => {
     }
   }
 
+  const goToHome = () => {
+    navigate("/allPosts");
+  }
+
   return (
     <div className="w-[24%] pl-10 p-2 flex flex-col justify-around max-h-screen sticky">
       <i className="fa-brands fa-x-twitter fa-2xl ml-5"></i>
-      <div className="flex flex-col justify-around gap-8">
-        <div className="flex items-center justify-center gap-6 max-w-[150px] h-[40px] cursor-pointer hover:bg-[#1DA1F2] rounded-full">
+      <div className="flex flex-col justify-around gap-8" >
+        <div className="flex items-center justify-center gap-6 max-w-[150px] h-[40px] cursor-pointer hover:bg-[#1DA1F2] rounded-full" onClick={goToHome}>
           <i className="fa-solid fa-house fa-xl" style="color: #ffffff;"></i>
           <span className="text-xl">Home</span>
         </div>
