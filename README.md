@@ -31,7 +31,7 @@ The backend API for this application can be found [here](https://github.com/Swar
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/twitter-frontend-clone.git
+    git clone https://github.com/SwarajAnand/twitterFrontend.git
     cd twitter-frontend-clone
     ```
 
