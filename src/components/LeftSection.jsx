@@ -34,6 +34,10 @@ const LeftSection = () => {
     navigate("/allPosts");
   }
 
+  const goToSearch = () => {
+    navigate("/search");
+  }
+
   return (
     <div className="w-[24%] pl-10 p-2 flex flex-col justify-around max-h-screen sticky">
       <i className="fa-brands fa-x-twitter fa-2xl ml-5"></i>
@@ -43,7 +47,7 @@ const LeftSection = () => {
           <span className="text-xl">Home</span>
         </div>
 
-        <div className="flex items-center justify-center gap-6 max-w-[150px] h-[40px] cursor-pointer hover:bg-[#1DA1F2] rounded-full">
+        <div className="flex items-center justify-center gap-6 max-w-[150px] h-[40px] cursor-pointer hover:bg-[#1DA1F2] rounded-full" onClick={goToSearch}>
           <i
             className="fa-solid fa-magnifying-glass fa-xl"
             style="color: #fafafa;"

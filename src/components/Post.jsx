@@ -4,8 +4,7 @@ import { BASE_URL } from "../utils/common";
 import apiClient from "../utils/apiClient";
 import { useNavigate } from "react-router-dom";
 
-const Post = ({ data }) => {
-    // console.log(data);
+const Post = ({ data, userAvatar }) => {
   const { currUser } = useContext(TwitterContext);
   const loggedInUser = currUser?.userId;
   const { createdAt, description, _id, user, likeCount, likes } = data;
@@ -47,18 +46,18 @@ const Post = ({ data }) => {
   }
 
   return (
-    <div className="flex gap-2 border border-gray-800 -mx-4">
-      <div className="min-w-fit mx-2 p-2">
-        {user?.avatar && (
+    <div className="flex gap-2 border border-gray-800 w-full">
+      <div className="min-w-fit mx-2 p-4">
+        {(user?.avatar || userAvatar) && (
           <img
-            src={user?.avatar}
+            src={user?.avatar || userAvatar}
             alt="avatar"
             className="w-[40px] h-[40px] rounded-full object-cover"
           />
         )}
       </div>
-      <div>
-        <div className="flex gap-2 items-center mb-2 cursor-pointer max-w-fit" onClick={goToProfile}>
+      <div className="w-full">
+        <div className="flex gap-6 mb-2 cursor-pointer w-full" onClick={goToProfile}>
           <p className="font-bold">{user.userName}</p>
           <p className="font-thin text-sm text-gray-200">@{user.userName}</p>
           <p className="font-thin text-sm text-gray-300">

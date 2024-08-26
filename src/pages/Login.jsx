@@ -70,7 +70,7 @@ const Login = () => {
         <h1 className="lg:text-7xl text-5xl font-black md:my-10 ">
           Happening now
         </h1>
-        <p className="text-2xl md:text-4xl font-black">Create account</p>
+        <p className="text-2xl md:text-4xl font-black">Login User</p>
 
         <input
           value={data.email}

@@ -6,6 +6,7 @@ import apiClient from "../utils/apiClient";
 
 const CreatePost = ({setNewPost}) => {
   const { currUser } = useContext(TwitterContext);
+  const [previewSrc, setPreviewSrc] = useState(null);
   const [content, setContent] = useState("");
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
@@ -17,7 +18,12 @@ const CreatePost = ({setNewPost}) => {
   }, []);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    if (selectedFile) {
+      const objectUrl = URL.createObjectURL(selectedFile);
+      setPreviewSrc(objectUrl);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -27,7 +33,7 @@ const CreatePost = ({setNewPost}) => {
     const formData = new FormData();
     formData.append("description", content);
     if (file) {
-      formData.append("image", file);
+      formData.append("avatar", file);
     }
 
     try {
@@ -40,6 +46,7 @@ const CreatePost = ({setNewPost}) => {
       toast(response.data.message);
       setContent("");
       setFile(null);
+      setPreviewSrc(null);
       setNewPost((prev) => {
         return !prev;
       })
@@ -93,6 +100,11 @@ const CreatePost = ({setNewPost}) => {
             </button>
           </div>
         </form>
+        {previewSrc && (
+        <div>
+          <img src={previewSrc} alt="Preview" className="max-h-[200px]"/>
+        </div>
+      )}
         {message && <p>{message}</p>}
       </div>
       <Toaster

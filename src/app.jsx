@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import MiddleSection from "./components/MiddleSection";
+import SearchPage from "./pages/SearchPage";
 
 
 export function App() {
@@ -39,6 +40,14 @@ export function App() {
           element: (
             <ProtectedRoute>
               <UserProfile />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "/search",
+          element: (
+            <ProtectedRoute>
+              <SearchPage />
             </ProtectedRoute>
           )
         }

@@ -15,6 +15,8 @@ const UserProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pageRefresh, setPageRefresh] = useState(false);
 
+  
+
   useEffect(() => {
     if (id) {
       apiClient
@@ -22,7 +24,6 @@ const UserProfile = () => {
         .then((res) => {
           console.log(res.data.data.user);
           setUserData(res.data.data.user);
-          // setLoading(false);
         })
         .catch((err) => {
           console.error(err);
@@ -44,7 +45,6 @@ const UserProfile = () => {
       .get(`${BASE_URL}users/follow?id=${id}`)
       .then((res) => {
         console.log(res.data);
-        // setUserData(res.data);
         setPageRefresh(!pageRefresh);
       })
       .catch((err) => {
@@ -57,7 +57,6 @@ const UserProfile = () => {
       .get(`${BASE_URL}users/unFollow?id=${id}`)
       .then((res) => {
         console.log(res.data);
-        // setUserData(res.data);
         setPageRefresh(!pageRefresh);
       })
       .catch((err) => {
@@ -87,7 +86,7 @@ const UserProfile = () => {
           <div className="flex justify-around p-4 items-center">
             <img
               src={userData?.avatar}
-              className="w-[150px] h-[150px] rounded-full object-cover"
+              className="w-[150px] h-[150px] rounded-full object-cover "
             />
             {currUser?.userId === id ? (
               <button disabled className="w-[150px] h-[40px] bg-[#1DA1F2]">
@@ -95,14 +94,18 @@ const UserProfile = () => {
                 {userData.followers.length} Followers
               </button>
             ) : (
-              <div className="flex gap-4">
-                <button className="w-[150px] h-[40px] bg-[#1DA1F2]" onClick={handleFollow}>
-                  Follow
-                </button>
-
-                <button className="w-[150px] h-[40px] bg-[#1DA1F2]" onClick={handleUnfollow}>
-                  Unfollow
-                </button>
+              <div>
+              {
+                userData.followers.includes(currUser?.userId) ? (
+                  <button className="w-[150px] h-[40px] bg-[#1DA1F2]" onClick={handleUnfollow}>
+                    Unfollow
+                  </button>
+                ) : (
+                  <button className="w-[150px] h-[40px] bg-[#1DA1F2]" onClick={handleFollow}>
+                    Follow
+                  </button>
+                )
+              }
               </div>
             )}
           </div>
@@ -120,7 +123,7 @@ const UserProfile = () => {
 
           <div>
             {userData?.posts?.map((ele) => {
-              return <Post key={ele._id} data={ele} />;
+              return <Post key={ele._id} data={ele} userAvatar={userData?.avatar}/>;
             })}
           </div>
         </div>

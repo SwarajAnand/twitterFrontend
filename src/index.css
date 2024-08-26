@@ -45,16 +45,22 @@ body{
 
 
       .scroll-container {
-        width: 48%;
-        height: 100vh; /* Full viewport height */
-        overflow: hidden; /* Hide default scrollbars */
-        position: relative; /* Ensure the container is positioned for custom scrollbar styling */
+        width: 50%;
+        height: 100vh; 
+        scrollbar-width: none; /* For Firefox */
+        -ms-overflow-style: none; 
+        overflow-y: scroll;
+        position: relative;
     }
+
+    .scroll-container::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
     
     .scroll-content {
         height: 100%; /* Full height to allow scrolling */
         overflow: auto; /* Allow scrolling */
-        padding-right: 16px; /* Add padding to ensure content doesn't get hidden behind the scrollbar */
     }
     
     /* Hide the scrollbar for Webkit browsers (Chrome, Safari) */

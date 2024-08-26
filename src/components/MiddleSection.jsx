@@ -8,7 +8,7 @@ const MiddleSection = () => {
   const [postData, setPostData] = useState([]);
   const [newPost, setNewPost] = useState(null);
   useEffect(() => {
-    apiClient.get(`/posts/allPosts?page=${page}&limit=10`).then((res) => {
+    apiClient.get(`/posts/allPosts?page=${page}&limit=`).then((res) => {
       setPostData(res.data.posts);
     });
   }, [page, newPost]);
